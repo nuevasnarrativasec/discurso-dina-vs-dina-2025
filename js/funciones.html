@@ -1,0 +1,567 @@
+<!-- popups | optimizado-->
+    <script>
+        // Función para detener el video
+        var stopVideo = function (element) {
+            var iframe = element.querySelector('iframe');
+            var video = element.querySelector('video');
+            if (iframe) {
+                var iframeSrc = iframe.src;
+                iframe.src = iframeSrc;
+            }
+            if (video) {
+                video.pause();
+            }
+        };
+
+        // Función para manejar el clic en las frases
+        var handleFraseClick = function(id, boxId) {
+            document.getElementById(id).addEventListener('click', function() {
+                const box = document.querySelector(boxId);
+                if (box) {
+                    box.classList.remove('salir');
+                    box.classList.add('active');
+                } else {
+                    console.error(`Elemento con ID ${boxId} no encontrado`);
+                }
+            });
+        };
+
+        // Lista de frases y sus boxes correspondientes
+        var frases = [
+            { frase: 'enganoso-1', box: '#box-desplegable-enganoso-1' },
+            { frase: 'enganoso-2', box: '#box-desplegable-enganoso-2' },
+            { frase: 'enganoso-3', box: '#box-desplegable-enganoso-3' },
+            { frase: 'enganoso-4', box: '#box-desplegable-enganoso-4' },
+            { frase: 'enganoso-5', box: '#box-desplegable-enganoso-5' },
+            { frase: 'enganoso-6', box: '#box-desplegable-enganoso-6' },
+            { frase: 'enganoso-7', box: '#box-desplegable-enganoso-7' },
+            { frase: 'falso-1', box: '#box-desplegable-falso-1' },
+            { frase: 'falso-2', box: '#box-desplegable-falso-2' },
+            { frase: 'verdadero-1', box: '#box-desplegable-verdadero-1' },
+            { frase: 'verdadero-2', box: '#box-desplegable-verdadero-2' },
+            { frase: 'verdadero-3', box: '#box-desplegable-verdadero-3' },
+            { frase: 'verdadero-4', box: '#box-desplegable-verdadero-4' },
+            { frase: 'verdadero-5', box: '#box-desplegable-verdadero-5' },
+            { frase: 'verdadero-6', box: '#box-desplegable-verdadero-6' },
+            { frase: 'verdadero-7', box: '#box-desplegable-verdadero-7' },
+            { frase: 'destacada-nacional-1', box: '#box-desplegable-nacional-1' },
+            { frase: 'destacada-nacional-2', box: '#box-desplegable-nacional-2' },
+            { frase: 'destacada-nacional-3', box: '#box-desplegable-nacional-3' },
+            { frase: 'destacada-politica-1', box: '#box-desplegable-politica-1' },
+            { frase: 'destacada-politica-2', box: '#box-desplegable-politica-2' },
+            { frase: 'destacada-economia-1', box: '#box-desplegable-economia-1' },
+            { frase: 'destacada-economia-2', box: '#box-desplegable-economia-2' },
+            { frase: 'destacada-ecdata-1', box: '#box-desplegable-ecdata-1' },
+            { frase: 'quechua-1', box: '#box-desplegable-quechua-1' },
+            { frase: 'quechua-2', box: '#box-desplegable-quechua-2' },
+            { frase: 'quechua-3', box: '#box-desplegable-quechua-3' }
+        ];
+
+        // Añadir eventos para cada frase y su versión móvil
+        frases.forEach(function(fraseObj) {
+            handleFraseClick(`frase-${fraseObj.frase}`, fraseObj.box);
+            handleFraseClick(`frase-${fraseObj.frase}-movil`, fraseObj.box);
+        });
+
+        // Manejar clic en los botones de cerrar
+        const botonesCerrar = document.getElementsByClassName('btn-cerrar');
+        for (let i = 0; i < botonesCerrar.length; i++) {
+            botonesCerrar[i].addEventListener('click', function() {
+                const boxMainDesplegable = this.closest('.box-main-desplegable');
+                boxMainDesplegable.classList.remove('active');
+                boxMainDesplegable.classList.add('salir');
+                stopVideo(boxMainDesplegable);
+            });
+        }
+    </script>
+
+    <!-- botón ver más | optimizado -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function setupToggle(buttonId, containerId) {
+                const textContainer = document.getElementById(containerId);
+                const toggleButton = document.getElementById(buttonId);
+
+                toggleButton.addEventListener("click", function() {
+                    const isCollapsed = textContainer.classList.toggle("collapsed");
+                    textContainer.classList.toggle("expanded", !isCollapsed);
+                    toggleButton.textContent = isCollapsed ? "Ver más" : "Ver menos";
+                });
+            }
+
+            setupToggle("toggle-button", "text-container");
+            setupToggle("toggle-button-movil", "text-container-movil");
+        });
+
+    </script>
+
+    <!-- animación relojes | optimizado-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Configuración de Intersection Observer
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.4
+            };
+
+            function handleIntersection(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Inicializar gráficos cuando el contenedor es visible
+                        initializeCharts();
+                        // Dejar de observar después de la primera intersección
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }
+
+            const observer = new IntersectionObserver(handleIntersection, observerOptions);
+            const targets = document.querySelectorAll(".box-duracion-discurso");
+
+            targets.forEach(target => {
+                observer.observe(target);
+            });
+
+            function initializeCharts() {
+                const chartData = {
+                    "reloj-2024": { value: 36, color: "#FF292A" },
+                    "reloj-2023": { value: 18, color: "#FF292A" },
+                    "reloj-2024-movil": { value: 36, color: "#FF292A" },
+                    "reloj-2023-movil": { value: 18, color: "#FF292A" }
+                };
+
+                const defaultOptions = {
+                    animation: true,
+                    animationEasing: "easeOutSine",
+                    percentageInnerCutout: 70,
+                    segmentShowStroke: false
+                };
+
+                Object.keys(chartData).forEach(id => {
+                    const ctx = document.getElementById(id).getContext("2d");
+                    const data = [
+                        { value: chartData[id].value, color: chartData[id].color },
+                        { value: 50, color: "#cfcfcf" }
+                    ];
+                    new Chart(ctx).Doughnut(data, defaultOptions);
+                });
+            }
+        }); 
+    </script>
+
+    <!-- análisis de lenguaje no verbal-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar los elementos de portada por defecto
+            const portadas = document.querySelectorAll('.bg-portada-ano-2023, .bg-portada-ano-2024');
+            portadas.forEach(portada => portada.style.display = 'block');
+
+            // Obtener todos los elementos <li>
+            const menuItems = document.querySelectorAll('.lenguaje li');
+
+            // Añadir evento click a cada <li>
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remover la clase 'active' de todos los <li>
+                    menuItems.forEach(menuItem => menuItem.classList.remove('active'));
+
+                    // Añadir la clase 'active' al <li> clicado
+                    this.classList.add('active');
+
+                    // Ocultar todos los elementos bg-analisis excepto los de portada
+                    const allBgAnalisis = document.querySelectorAll('.bg-analisis');
+                    allBgAnalisis.forEach(bg => {
+                        if (!bg.classList.contains('bg-portada-ano-2023') && !bg.classList.contains('bg-portada-ano-2024')) {
+                            bg.style.display = 'none';
+                        }
+                    });
+
+                    // Mostrar los elementos correspondientes al id del <li> clicado
+                    const selectedBgAnalisis = document.querySelectorAll(`.bg-${this.id}-2023, .bg-${this.id}-2024`);
+                    selectedBgAnalisis.forEach(bg => bg.style.display = 'block');
+                });
+            });
+        });
+    </script>
+
+    <!-- script svg -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("segment1").addEventListener("click", function() {
+                toggleInfo("info1");
+            });
+            document.getElementById("segment2").addEventListener("click", function() {
+                toggleInfo("info2");
+            });
+            document.getElementById("segment3").addEventListener("click", function() {
+                toggleInfo("info3");
+            });
+
+            function toggleInfo(infoId) {
+                const infoDiv = document.getElementById(infoId);
+                const isCurrentlyVisible = infoDiv.style.display === 'block';
+
+                // Hide all info divs
+                document.querySelectorAll('.info-div').forEach(function(div) {
+                    div.style.display = 'none';
+                });
+
+                // Toggle the clicked info div
+                if (!isCurrentlyVisible) {
+                    infoDiv.style.display = 'block';
+                    
+                    // Scroll to the box-main-info div if the info div is now visible
+                    document.querySelector('.box-main-info').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    </script>
+
+    <!-- desplegable proyectos | optimizado-->
+    <script>
+        $(document).ready(function() {
+            $('.box-head').on('click', function() {
+                const $currentBoxHead = $(this);
+                const $currentBoxInfo = $currentBoxHead.next('.box-info-proyecto');
+                
+                // If the clicked box-head is already active, just close it
+                if ($currentBoxHead.hasClass('active')) {
+                    $currentBoxHead.removeClass('active');
+                    $currentBoxInfo.slideUp();
+                    $currentBoxHead.find('.flecha').attr('src', '/especiales-multimedia/promesometro-dina-boluarte/img/flecha-abajo.png');
+                    return;
+                }
+
+                // Close any other open .box-info-proyecto and reset arrow directions
+                $('.box-head.active').removeClass('active').next('.box-info-proyecto').slideUp();
+                $('.box-head').find('.flecha').attr('src', '/especiales-multimedia/promesometro-dina-boluarte/img/flecha-abajo.png');
+
+                // Open the clicked .box-info-proyecto and set the arrow direction
+                $currentBoxHead.addClass('active');
+                $currentBoxInfo.slideDown();
+                $currentBoxHead.find('.flecha').attr('src', '/especiales-multimedia/promesometro-dina-boluarte/img/flecha-arriba.png');
+            });
+        }); 
+    </script>
+
+    <!-- análisis sentimiento -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const listItems = document.querySelectorAll("#presidents-sentimiento li");
+            const boxes = document.querySelectorAll(".box-sentimiento");
+
+            function showBox(id) {
+                boxes.forEach(box => {
+                    box.style.display = box.id === id ? "block" : "none";
+                });
+            }
+
+            listItems.forEach(li => {
+                li.addEventListener("click", function() {
+                    listItems.forEach(item => item.classList.remove("active-sentimiento"));
+                    this.classList.add("active-sentimiento");
+                    showBox(this.getAttribute("data-target"));
+                });
+            });
+
+            // Mostrar por defecto el eje-ollanta
+            document.querySelector("li[data-target='sentimiento-ollanta']").classList.add("active-sentimiento");
+            showBox("sentimiento-ollanta");
+        });
+    </script>
+
+    <!-- palabras más mencionadas-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const yearItems = document.querySelectorAll(".anios li");
+            const boxes = document.querySelectorAll(".box-palabras");
+
+            yearItems.forEach(function(item) {
+                item.addEventListener("click", function() {
+                    // Verificar si el elemento li ya está activo
+                    const isActive = item.classList.contains("active");
+
+                    // Si no está activo, proceder con la activación y mostrar el bloque correspondiente
+                    if (!isActive) {
+                        // Remover la clase 'active' de todos los elementos li y ocultar todos los bloques
+                        yearItems.forEach(function(li) {
+                            li.classList.remove("active");
+                        });
+                        boxes.forEach(function(box) {
+                            box.style.display = "none";
+                        });
+
+                        // Añadir la clase 'active' al elemento li clickeado y mostrar el bloque correspondiente
+                        item.classList.add("active");
+                        const targetBoxClass = item.getAttribute("data-target");
+                        document.querySelector(`.${targetBoxClass}`).style.display = "block";
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- siguiente video nacional 1 | optimizado-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const siguienteFraseButton = document.getElementById('siguiente-frase-destacada-nacional-1');
+            const siguienteFraseButtonMovil = document.getElementById('siguiente-frase-destacada-nacional-1-movil');
+            const boxMainDesplegable = document.querySelector('.box-main-desplegable-video-1-nacional');
+            const textContainer = document.getElementById('text-container');
+            const textContainerMovil = document.getElementById('text-container-movil');
+            const targetPhrase = document.getElementById('frase-destacada-nacional-2');
+            const targetPhraseMovil = document.getElementById('frase-destacada-nacional-2-movil');
+
+            function scrollToElement(element) {
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top + window.scrollY - 500,
+                    behavior: 'smooth'
+                });
+            }
+
+            function stopVideo(element) {
+                const iframe = element.querySelector('iframe');
+                if (iframe) {
+                    const iframeSrc = iframe.src;
+                    iframe.src = ''; // Vaciar el src para detener el video
+                    iframe.src = iframeSrc; // Restaurar el src original
+                }
+                const video = element.querySelector('video');
+                if (video) {
+                    video.pause();
+                }
+            }
+
+            function handleButtonClick(isMobile) {
+                const targetElement = isMobile ? targetPhraseMovil : targetPhrase;
+                const containerElement = isMobile ? textContainerMovil : textContainer;
+
+                if (targetElement) {
+                    if (containerElement.classList.contains('collapsed')) {
+                        containerElement.classList.add('expanded');
+                        setTimeout(() => {
+                            scrollToElement(targetElement);
+                        }, 2000);
+                    } else {
+                        containerElement.classList.add('expanded');
+                        scrollToElement(targetElement);
+                    }
+                }
+
+                boxMainDesplegable.classList.remove('active');
+                boxMainDesplegable.classList.add('salir');
+                stopVideo(boxMainDesplegable);
+            }
+
+            siguienteFraseButton.addEventListener('click', function() {
+                handleButtonClick(false);
+            });
+
+            $(siguienteFraseButtonMovil).click(function() {
+                $('html, body').animate({
+                    scrollTop: $(targetPhraseMovil).offset().top - 500
+                }, 'slow');
+                handleButtonClick(true);
+            });
+        });
+    </script>
+
+    <!-- siguiente video nacional 2 | optimizado-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const siguienteFraseButton2 = document.getElementById('siguiente-frase-destacada-nacional-2');
+        const siguienteFraseButtonMovil2 = document.getElementById('siguiente-frase-destacada-nacional-2-movil');
+        const boxMainDesplegable2 = document.querySelector('.box-main-desplegable-video-2-nacional');
+        const textContainer = document.getElementById('text-container');
+        const textContainerMovil = document.getElementById('text-container-movil');
+        const targetPhrase2 = document.getElementById('frase-destacada-nacional-3');
+        const targetPhraseMovil2 = document.getElementById('frase-destacada-nacional-3-movil');
+
+        function scrollToElement(element) {
+            window.scrollTo({
+                top: element.getBoundingClientRect().top + window.scrollY - 500,
+                behavior: 'smooth'
+            });
+        }
+
+        function stopVideo(element) {
+            const iframe = element.querySelector('iframe');
+            if (iframe) {
+                const iframeSrc = iframe.src;
+                iframe.src = ''; // Vaciar el src para detener el video
+                iframe.src = iframeSrc; // Restaurar el src original
+            }
+            const video = element.querySelector('video');
+            if (video) {
+                video.pause();
+            }
+        }
+
+        function handleButtonClick2(isMobile) {
+            const targetElement = isMobile ? targetPhraseMovil2 : targetPhrase2;
+            const containerElement = isMobile ? textContainerMovil : textContainer;
+
+            if (targetElement) {
+                if (containerElement.classList.contains('collapsed')) {
+                    containerElement.classList.add('expanded');
+                    setTimeout(() => {
+                        scrollToElement(targetElement);
+                    }, 2000);
+                } else {
+                    containerElement.classList.add('expanded');
+                    scrollToElement(targetElement);
+                }
+            }
+
+            boxMainDesplegable2.classList.remove('active');
+            boxMainDesplegable2.classList.add('salir');
+            stopVideo(boxMainDesplegable2);
+        }
+
+        siguienteFraseButton2.addEventListener('click', function() {
+            handleButtonClick2(false);
+        });
+
+        $(siguienteFraseButtonMovil2).click(function() {
+            $('html, body').animate({
+                scrollTop: $(targetPhraseMovil2).offset().top - 500
+            }, 'slow');
+            handleButtonClick2(true);
+        });
+    });
+
+    </script>
+
+    <!-- siguiente video política | optimizado-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const siguienteFraseButton1 = document.getElementById('siguiente-frase-destacada-politica-1');
+            const siguienteFraseButtonMovil1 = document.getElementById('siguiente-frase-destacada-politica-1-movil');
+            const boxMainDesplegable1 = document.querySelector('.box-main-desplegable-video-1-politica');
+            const textContainer = document.getElementById('text-container');
+            const textContainerMovil = document.getElementById('text-container-movil');
+            const targetPhrase1 = document.getElementById('frase-destacada-politica-2');
+            const targetPhraseMovil1 = document.getElementById('frase-destacada-politica-2-movil');
+
+            function scrollToElement(element) {
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top + window.scrollY - 500,
+                    behavior: 'smooth'
+                });
+            }
+
+            function stopVideo(element) {
+                const iframe = element.querySelector('iframe');
+                if (iframe) {
+                    const iframeSrc = iframe.src;
+                    iframe.src = ''; // Vaciar el src para detener el video
+                    iframe.src = iframeSrc; // Restaurar el src original
+                }
+                const video = element.querySelector('video');
+                if (video) {
+                    video.pause();
+                }
+            }
+
+            function handleButtonClick1(isMobile) {
+                const targetElement = isMobile ? targetPhraseMovil1 : targetPhrase1;
+                const containerElement = isMobile ? textContainerMovil : textContainer;
+
+                if (targetElement) {
+                    if (containerElement.classList.contains('collapsed')) {
+                        containerElement.classList.add('expanded');
+                        setTimeout(() => {
+                            scrollToElement(targetElement);
+                        }, 2000);
+                    } else {
+                        containerElement.classList.add('expanded');
+                        scrollToElement(targetElement);
+                    }
+                }
+
+                boxMainDesplegable1.classList.remove('active');
+                boxMainDesplegable1.classList.add('salir');
+                stopVideo(boxMainDesplegable1);
+            }
+
+            siguienteFraseButton1.addEventListener('click', function() {
+                handleButtonClick1(false);
+            });
+
+            $(siguienteFraseButtonMovil1).click(function() {
+                $('html, body').animate({
+                    scrollTop: $(targetPhraseMovil1).offset().top - 500
+                }, 'slow');
+                handleButtonClick1(true);
+            });
+        });
+    </script>
+
+    <!-- siguiente video economía | optimizado-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const siguienteFraseButton1 = document.getElementById('siguiente-frase-destacada-economia-1');
+            const siguienteFraseButtonMovil1 = document.getElementById('siguiente-frase-destacada-economia-1-movil');
+            const boxMainDesplegable1 = document.querySelector('.box-main-desplegable-video-1-economia');
+            const textContainer = document.getElementById('text-container');
+            const textContainerMovil = document.getElementById('text-container-movil');
+            const targetPhrase1 = document.getElementById('frase-destacada-economia-2');
+            const targetPhraseMovil1 = document.getElementById('frase-destacada-economia-2-movil');
+
+            function scrollToElement(element) {
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top + window.scrollY - 500,
+                    behavior: 'smooth'
+                });
+            }
+
+            function stopVideo(element) {
+                const iframe = element.querySelector('iframe');
+                if (iframe) {
+                    const iframeSrc = iframe.src;
+                    iframe.src = ''; // Vaciar el src para detener el video
+                    iframe.src = iframeSrc; // Restaurar el src original
+                }
+                const video = element.querySelector('video');
+                if (video) {
+                    video.pause();
+                }
+            }
+
+            function handleButtonClick1(isMobile) {
+                const targetElement = isMobile ? targetPhraseMovil1 : targetPhrase1;
+                const containerElement = isMobile ? textContainerMovil : textContainer;
+
+                if (targetElement) {
+                    if (containerElement.classList.contains('collapsed')) {
+                        containerElement.classList.add('expanded');
+                        setTimeout(() => {
+                            scrollToElement(targetElement);
+                        }, 2000);
+                    } else {
+                        containerElement.classList.add('expanded');
+                        scrollToElement(targetElement);
+                    }
+                }
+
+                boxMainDesplegable1.classList.remove('active');
+                boxMainDesplegable1.classList.add('salir');
+                stopVideo(boxMainDesplegable1);
+            }
+
+            siguienteFraseButton1.addEventListener('click', function() {
+                handleButtonClick1(false);
+            });
+
+            $(siguienteFraseButtonMovil1).click(function() {
+                $('html, body').animate({
+                    scrollTop: $(targetPhraseMovil1).offset().top - 500
+                }, 'slow');
+                handleButtonClick1(true);
+            });
+        });
+    </script>
