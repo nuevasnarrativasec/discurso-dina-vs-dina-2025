@@ -1732,25 +1732,59 @@ ul.leyenda-colores{
         width: 70%;
     }
 
-    .box-portada #video-portada-desktop{
+    .box-portada #video-portada-desktop,
+    .box-portada #video-portada-tablet{
         display: none;
     }
-    .box-portada #video-portada-movil{
+    body .box-portada #video-portada-movil{
         display: block;
     }
     .box-portada video{
         object-fit: cover;
     }
+    .box-personaje {
+        padding: 0 20px;
+    }
+        .box-personaje .box-info-personaje{
+            width: 100%;
+        }
+        .box-info-personaje p{
+            font-style: normal;
+        }
+    .box-main-titular h1{
+        font-size: 42px;
+    }
 
 }
 
-@media only screen and (max-width: 768px) { 
+@media only screen and (max-width: 767px) { 
 
+    .box-temas-dina.box-temas-dina ul li{
+        margin: 0;
+    }
+
+    .box-portada #video-portada-movil,
+    .box-portada #video-portada-desktop{
+        display: none;
+    }    
+    .box-portada #video-portada-tablet{
+        display: block;
+        object-fit: cover;
+    }
     
 }
 
 @media only screen and (max-width: 1024px) {
 
+    .box-portada video{
+        object-position: center;
+    }
+    .box-main-titular{
+        width: 350px;
+    }
+    .box-main-titular h1{
+        font-size: 48px;
+    }
 
 }
 
@@ -1764,10 +1798,11 @@ ul.leyenda-colores{
 
 /** 2025 **/
 
-#video-portada-desktop{
+.box-portada #video-portada-desktop{
     display: block;
 }
-#video-portada-movil{
+.box-portada #video-portada-movil,
+.box-portada #video-portada-tablet{
     display: none;
 }
 
@@ -1814,6 +1849,7 @@ ul.leyenda-colores{
     }
 .box-personajes{
     background-color: #f4f4f4;
+    box-sizing: border-box;
     margin-bottom: 40px;
     padding: 30px 0;
 }
@@ -1856,7 +1892,7 @@ ul.leyenda-colores{
                     font: 28px/1.1 'prelo_slabmedium';
                     margin: 10px auto;
                     vertical-align: bottom;
-                    width: 66%;
+                    width: 60%;
                 }
                 .box-info-personaje p{
                     padding: 10px 0;
