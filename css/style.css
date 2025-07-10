@@ -503,7 +503,8 @@ body{
             .box-referencias p{
                 margin: 0 auto 20px !important;
             }
-            .box-main-promesometro h5{
+            .box-main-promesometro h5,
+            .box-facciones h5{
                 font: 25px/1.1 'prelo_slabbold';
                 margin: 0 auto 10px;
                 text-align: center;
@@ -1755,6 +1756,18 @@ ul.leyenda-colores{
         font-size: 42px;
     }
 
+    .box-facciones .scroll-facciones{
+        width: auto;
+    }
+    .scroll-facciones .box-gif,
+    .scroll-facciones .box-info-sentimiento{
+        display: block;
+    }
+    .scroll-facciones .box-gif,
+    .scroll-facciones .box-info-sentimiento{
+        max-width: 67%;
+    }
+
 }
 
 @media only screen and (max-width: 767px) { 
@@ -1897,5 +1910,158 @@ ul.leyenda-colores{
                 .box-info-personaje p{
                     padding: 10px 0;
                 }
-
+.box-facciones{
+    margin: 40px auto;
+}
+    .box-sentimiento-facciones{
+        flex: 0 0 auto;
+        margin: 20px auto;
+        max-width: 700px;
+        padding-top: 40px;
+        scroll-snap-align: start;
+        text-align: center;       
+    }
+        .box-gif{
+            display: inline-block;
+            max-width: 49%;
+            vertical-align: top;
+        }
+            .box-gif h6{
+                color: #fff;
+                font: 18px/1.5 "Roboto", sans-serif;
+                font-weight: 700;
+                margin: 0 auto;
+                padding: 5px 0;
+                text-align: center;
+                text-transform: uppercase;
+            }
+                .box-gif h6.alegria{
+                    background-color: #FFDF31;
+                }
+                .box-gif h6.enojo{
+                    background-color: #F46464;
+                }
+                .box-gif h6.miedo{
+                    background-color: #F064EB;
+                }
+                .box-gif h6.tristeza{
+                    background-color: #9E89F4;
+                }
+                .box-gif h6.desagrado{
+                    background-color: #6ECC80;
+                }                
+        .box-info-sentimiento{
+            background-color: #f7f7f7;
+            box-sizing: border-box;
+            display: inline-block;
+            margin-bottom: 4px;
+            margin-left: -4px;
+            max-width: 49%;
+            min-height: 342px;
+            padding: 20px 30px;
+            text-align: left;
+            vertical-align: bottom;
+        }
+            .box-info-sentimiento h5{
+                font: 20px/1.2 "Roboto", sans-serif;
+                font-weight: 700;
+                margin: 0 auto 10px;
+                text-align: left;
+            }
+            .box-info-sentimiento h4{
+                font: 16px/1.2 "Roboto", sans-serif;
+                font-weight: 800;
+                margin: 10px auto;
+                text-transform: uppercase;
+            }
+            .box-info-sentimiento p{
+                font: 14px / 1.5 "Roboto", sans-serif;
+                font-weight: 400;
+                padding: 0;
+                text-align: left;                
+            }
+                .box-sentimiento .box-info-sentimiento h5.amarillo{
+                    color: #FFDF31;
+                }
+                .box-sentimiento .box-info-sentimiento h5.rojo{
+                    color: #F46464;
+                }
+                .box-sentimiento .box-info-sentimiento h5.morado{
+                    color: #F064EB;
+                }
+                .box-sentimiento .box-info-sentimiento h5.azul{
+                    color: #9E89F4;
+                }
+                .box-sentimiento .box-info-sentimiento h5.verde{
+                    color: #6ECC80
+                }                
+            .box-info-sentimiento audio{
+                margin-top: 10px;
+                width: 100%;
+            }
+        .box-gestos{
+           /* border-bottom: 1px solid #707070;*/
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+        }   
+            .box-gestos h5{
+                font: 15px / 1.3 "Roboto", sans-serif;
+                font-weight: 400;                
+                margin: 0 auto 15px;
+                padding: 10px 20px;
+                text-align: left;
+                text-transform: uppercase;
+            } 
+            .box-descripcion-gesto{
+                display: inline-block;
+                max-width: 300px;
+                vertical-align: top;
+            }
+                .box-simbolo{
+                    display: inline-block;
+                    margin-right: 10px;
+                    max-width: 10%;
+                    vertical-align: top;
+                }
+                    .box-simbolo svg{
+                        display: block;
+                        width: 100%;
+                    }
+                .box-descripcion-gesto p{
+                    display: inline-block;
+                    font: 14px / 1.3 "Roboto", sans-serif;
+                    font-weight: 400;                
+                    margin: 0 auto;
+                    max-width: 85%;
+                    text-align: left;
+                    vertical-align: top;
+                }
+                    .box-descripcion-gesto p span{
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+        p.descripcion{
+            font: 14px/1.6 "Roboto", sans-serif;
+            font-weight: 400;    
+            margin: 0 auto; 
+            max-width: 520px;
+            text-align: left;          
+        }
+            p.descripcion.bold{
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+    .scroll-facciones {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 0 20px;
+        width: 1200px;
+    }
+    img.btn-deslizar{
+        display: block;
+        margin: 10px auto;
+        max-width: 80px;
+    }
 
