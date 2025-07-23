@@ -1953,7 +1953,10 @@ ul.leyenda-colores{
                 }
                 .box-gif h6.desagrado{
                     background-color: #6ECC80;
-                }                
+                }  
+                .box-gif h6.neutral{
+                    background-color: #333333;
+                }              
         .box-info-sentimiento{
             background-color: #f7f7f7;
             box-sizing: border-box;
