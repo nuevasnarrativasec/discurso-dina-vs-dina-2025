@@ -20,6 +20,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
     <style>
         .skin-template-model0.ads_pushed,
         #clever-45754-889974-sticky-footer,
@@ -102,7 +109,7 @@
         <div class="box-ctn-portada">
             <div class="box-main-titular">
                 <h1>¿Qué cambió Dina Boluarte en su discurso? </h1>
-                <h2>Una guía para entender el 2025 vs. 2024</h2>
+                <h2>Una guía para comparar sus discursos 2025 vs. 2024</h2>
                 <!--<p>
                     <span>
                         Cuantificamos, analizamos y verificamos el discurso por Fiestas Patrias de la presidenta del Perú.
@@ -119,9 +126,9 @@
         </video>-->
         
 
-        <video id="video-portada-desktop" src="./video/portada.mp4" width="100%" muted loop playsinline autoplay></video> 
+        <video id="video-portada-desktop" src="./video/portada-nueva.mp4" width="100%" muted loop playsinline autoplay></video> 
         <video id="video-portada-movil" src="./video/portada-movil.mp4" width="100%" muted loop playsinline autoplay></video>
-        <video id="video-portada-tablet" src="./video/portada-768.mp4" width="100%" muted loop playsinline autoplay></video> 
+        <video id="video-portada-tablet" src="./video/portada-nueva.mp4" width="100%" muted loop playsinline autoplay></video> 
     </div>   
 
     <div class="box-main">
@@ -1141,7 +1148,7 @@
             
             <div class="box-temas-dina">
 
-                <span class="tema-dina">Selecciona un tema</span>
+                <span class="tema-dina">Selecciona un tema clave en su gestión</span>
                 <ul>
                     <li id="btn-aprobacion">
                         Evolución aprobación
@@ -1159,7 +1166,7 @@
                 </ul>
 
                 <div class="box-aprobacion lozad" data-loaded="false" id="box-aprobacion">
-                    <div class="flourish-embed flourish-chart" data-src="visualisation/18697148"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+                    <div class="flourish-embed flourish-chart" data-src="visualisation/24375078"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
                     <p>
                         Según encuesta de Datum Internacional para <span>El Comercio</span>, la presidenta Dina Boluarte alcanza la cifra de respaldo más baja de un gobernante peruano de la que se tiene registro. Su desaprobación sube a 91% a un año y medio de iniciar su gestión.
                     </p>
@@ -1168,16 +1175,20 @@
                 <div id="box-sueldo">
                     <img src="./img/bg-sueldo.jpg" alt="" width="100%">
                     <p>
-                        Según encuesta de Datum Internacional para <span>El Comercio</span>, la presidenta Dina Boluarte alcanza la cifra de respaldo más baja de un gobernante peruano de la que se tiene registro. Su desaprobación sube a 91% a un año y medio de iniciar su gestión.
+                        Con su sueldo de <span>16 mil soles</span>, Dina Boluarte ocupaba el penúltimo puesto entre países latinoamericanos, solo por encima de la remuneración de Bolivia. Ahora, con el aumento de <span>más del 120% de su sueldo</span>, la presidenta sube su puesto en el ranking de mejores remunerados de la región.
                     </p>
                 </div>
 
                 <div id="box-prensa">
-                    
+                    <p>
+                        Dina Boluarte cumplió <span>272 días continuos</span> en los cuales no declara, ni brinda una conferencia de prensa o se somete a las preguntas de los periodistas. La última vez que la mandataria respondió preguntas directas de parte de medios de comunicación fue durante la conferencia de prensa que brindó el 22 de octubre del 2024. (Actualizado al 21 de julio del 2025)
+                    </p>
                 </div>
 
                 <div id="box-ausencia">
-                    
+                    <div id="map"></div>
+
+
                 </div>
 
             </div>            
@@ -6765,6 +6776,79 @@
         document.getElementById("video-portada-movil").style.display = "none";
         document.getElementById("video-portada-tablet").style.display = "none";
     }
+    </script>
+
+    <!-- mapa -->
+    <script>
+        // Crear el mapa centrado en Lima, Perú
+        var map = L.map('map', {
+            center: [-12.0464, -77.0428],
+            zoom: 3,
+            scrollWheelZoom: true,
+            touchZoom: false,
+            zoomControl: false
+        });
+
+        // Agregar capa base de Esri World Gray Canvas
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+            minZoom: 0,
+            maxZoom: 20,
+        }).addTo(map);
+
+        // Agregar controles de zoom en la esquina inferior derecha
+        L.control.zoom({ position: "bottomright" }).addTo(map);
+
+        // Datos de los lugares
+        var lugares = [
+            { lat: -3.055432, lng: -60.0105943, lugar: "Brasil (Manaos)", diasAusencia: "4", motivo: "IV Reunión OTCA ", evento: "Protestas en curso por el estallido social de inicios de 2023 (aunque más calmadas), sin registros de bloqueos o enfrentamientos graves en vías nacionales esos días.", radio: 61000 },
+            { lat: 40.7127281, lng: -74.0060152, lugar: "EE.UU. (Nueva York)", diasAusencia: "5", motivo: "78ª Asamblea ONU ", evento: "Crisis económica: alta inflación y alza del limón, encareciendo ingredientes clave como para el ceviche.", radio: 93000 },
+            { lat: 52.50221, lng: 10.024328, lugar: "Alemania, Italia y Ciudad del Vaticano", diasAusencia: "5", motivo: "Gira diplomática europea", evento: "Aumento de la violencia urbana: ese día, se reportaron “ocho personas asesinadas en menos de 24 horas” en Lima.", radio: 29000 },
+            { lat: 38.9043075, lng: -77.0348193, lugar: "EE.UU. (Localidad APEP)", diasAusencia: "3", motivo: "I Cumbre Alianza APEP", evento: "No hubo incidentes reseñables, aunque se reportaron cortes de agua en el Callao por obras del Metro Línea 2.", radio: 6000 },
+            { lat: 37.7512156, lng: -122.4419253, lugar: "EE.UU. (San Francisco)", diasAusencia: "3", motivo: "Cumbre APEC 2023", evento:"Cambio de gabinete: el ministro del Interior fue sustituido, y emergieron denuncias de colusión contra familiares cercanos.", radio: 6000 },
+            { lat: 31.0940626, lng: 121.3751277, lugar: "China (Shenzhen, Shanghái, Suzhou, Pekín)", diasAusencia: "5", motivo: "Visita de Estado", evento:"No hubo incidentes reseñables.", radio: 6000 },
+            { lat: 46.749902, lng: 9.837171, lugar: "Suiza (Davos)", diasAusencia: "4", motivo: "Foro Económico Mundial", evento:"Atentado con bomba en Trujillo (20/ene) que dejó 2 heridos y derivó en el estado de emergencia. El gobierno informó que la presidenta mantendría su agenda pese al incidente.", radio: 113000 },
+            { lat: 41.9036365, lng: 12.4412527, lugar: "Vaticano (Roma)", diasAusencia: "4", motivo: "Investidura Papa León XIV", evento: "El 14 de mayo, un paro nacional convocado por gremios y transportistas por demandas de seguridad y lucha contra extorsión. Durante el viaje, se reportaron movilizaciones en Lima, Callao y otras regiones.", radio: 5000 },
+            { lat: -0.215567, lng: -78.5144563, lugar: "Ecuador (Quito)", diasAusencia: "1", motivo: "Toma de posesión Daniel Noboa", evento: "Aún se prolongaban tensiones por el paro del 14 de mayo: se mantenían bloqueos y paralización en zonas críticas con reclamos pendientes. Repercusiones en provincias como Arequipa, Puno y zonas de transporte público urbano.", radio: 6000 },
+            { lat: 43.7038095, lng: 7.2588937, lugar: "Francia (Niza)", diasAusencia: "5", motivo: "III Conferencia de la ONU sobre el Océano", evento: "El 8 junio, el Ministerio de Cultura revirtió la polémica disminución del área protegida de las Líneas de Nazca ante la presión social. Además, las declaraciones de la presidenta destacando “tranquilidad social y política” fueron cuestionadas por analistas.", radio: 12000 }            
+        ];
+
+        // Función para personalizar los clusters
+        var markers = L.markerClusterGroup({
+            iconCreateFunction: function (cluster) {
+                var count = cluster.getChildCount(); // Número de marcadores en el cluster
+                var color = count > 50 ? "#0e557e" : count > 20 ? "#0e557e" : "#0e557e"; // Rojo, Naranja o Azul
+
+                return L.divIcon({
+                    html: `<div style="
+                        background: ${color};
+                        width: 40px; height: 40px;
+                        border-radius: 50%;
+                        display: flex; align-items: center; justify-content: center;
+                        color: white; font-size: 14px; font-weight: bold;">
+                        ${count}</div>`,
+                    className: "custom-cluster",
+                    iconSize: [40, 40]
+                });
+            }
+        });
+
+        // Agregar marcadores al grupo
+        lugares.forEach(function (lugar) {
+            let marker = L.marker([lugar.lat, lugar.lng])
+                .bindPopup(`
+                    <strong>Destino:</strong> ${lugar.lugar} <br>
+                    <strong>Número de días que estuvo de viaje:</strong> ${lugar.diasAusencia} <br>
+                    <strong>Motivo:</strong> ${lugar.motivo} <br>
+                    <strong>Eventos que se dieron en el país:</strong> ${lugar.evento} 
+                `);
+
+            markers.addLayer(marker);
+        });
+
+        // Agregar los clusters al mapa
+        map.addLayer(markers);
+
     </script>
 
 </body>

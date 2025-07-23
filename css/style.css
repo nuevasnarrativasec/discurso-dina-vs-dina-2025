@@ -113,18 +113,18 @@ body{
         margin: 0 auto;
         max-width: 100%;
         text-align: center;
-        width: 480px;
+        width: 750px;
     }
         .box-main-titular h1{
             color: #fff;
-            font: 61px / 0.9 'prelo_slabextrabold';
+            font: 61px / 0.9 'prelo_slabsemibold';
             margin: 0 auto;
         }
         .box-main-titular h2{
             color: #fff;
             font: 25px / 1.2 'prelo_slabmedium';
             margin: 20px auto;
-            max-width: 300px;
+            max-width: 425px;
         }
             .box-main-titular h2 span{
                 background-color: #FFF72F;
@@ -221,7 +221,9 @@ body{
                 margin: 40px auto;
                 font-style: normal !important;
             }
-                .ctn-box-main .box-aprobacion p span {
+                .ctn-box-main .box-aprobacion p span,
+                .ctn-box-main #box-sueldo p span,
+                .ctn-box-main #box-prensa p span {
                     font-weight: 800;
                 }
         .box-discurso{
@@ -1588,7 +1590,7 @@ ul.leyenda-colores{
     }
 
     .box-ctn-portada{
-        top: 30%;
+        top: 45%;
     }
         .box-main-titular p{
             font-size: 19px;
@@ -2065,3 +2067,9 @@ ul.leyenda-colores{
         max-width: 80px;
     }
 
+#map {
+    height: 600px;
+    margin: 20px auto;
+    max-width: 1200px;
+    width: 100%;
+}
