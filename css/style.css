@@ -501,7 +501,7 @@ body{
             .box-analisis-no-verbal h5,
             .box-mapas-regiones h5,
             .box-personajes h5{
-                font: 25px/1.1 'prelo_slabbold';
+                font: 23px/1.1 'prelo_slabbold';
                 margin: 30px auto;
                 text-align: center;
             }
@@ -1785,7 +1785,7 @@ ul.leyenda-colores{
 @media only screen and (max-width: 767px) { 
 
     .box-temas-dina.box-temas-dina ul li{
-        margin: 0;
+        margin: 0 0 15px;
     }
 
     .box-portada #video-portada-movil,
@@ -1810,7 +1810,9 @@ ul.leyenda-colores{
     .box-main-titular h1{
         font-size: 48px;
     }
-
+    .box-facciones .scroll-facciones {
+        width: auto;
+    }
 }
 
 @media only screen and (max-height: 732px) { 
@@ -1818,6 +1820,9 @@ ul.leyenda-colores{
     .box-portada img{
         max-width: 500px;
     }    
+    .box-facciones .scroll-facciones {
+        width: auto;
+    }
 
 }
 
