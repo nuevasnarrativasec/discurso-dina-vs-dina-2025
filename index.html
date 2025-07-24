@@ -1211,10 +1211,7 @@
                 <p style="font-style: normal; margin-bottom: 30px;">
                     Evaluamos las emociones e intención de las menciones en los discursos, según las transcripciones oficiales. La valoración se realizó con IA a través de la clasificación de cada oración dentro de seis categorías previamente definidas. Finalmente, se calculó un promedio de las emociones identificadas y se procedió con una verificación manual.
                 </p>         
-                <p class="metodologia-flourish">
-                    <span>Metodología:</span>
-                    Gracias a técnicas de NLP (natural language processing), mediante Python y Hugging Face, analizamos más allá de las palabras e identificamos 7 emociones dentro del discurso presidencial.
-                </p>          
+                       
                 <span class="indicacion">selecciona el año</span>
                 <ul id="presidents-sentimiento">
                     <li data-target="sentimiento-ollanta">
@@ -1240,6 +1237,11 @@
                 <div class="box-sentimiento" id="sentimiento-ollanta">                
                     <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/24164223"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
                 </div>
+
+                <p class="metodologia-flourish" style="margin-top: 30px;">
+                    <span>Metodología:</span>
+                    Gracias a técnicas de NLP (natural language processing), mediante Python y Hugging Face, analizamos más allá de las palabras e identificamos 7 emociones dentro del discurso presidencial.
+                </p>   
             </div>
 
             <div class="box-facciones">
@@ -1251,13 +1253,11 @@
                     Para este análisis evaluamos miles de fotogramas de apariciones públicas de Dina Boluarte. Un modelo de inteligencia artificial clasificó los gestos faciales en siete emociones, según patrones validados por estudios sobre expresión emocional. Se calculó un promedio ponderado y se verificaron manualmente los resultados. También se identificaron frases donde coincidían los gestos más marcados con lo dicho.
                 </p>
 
-                <p class="metodologia-flourish">
-                    <span>Metodología:</span>  Este análisis se basó en inteligencia artificial aplicada a imágenes: usamos redes neuronales convolucionales (CNN) para clasificar emociones en 144 mil gestos faciales de Dina Boluarte. A partir de 12 mil fotos validadas y entrenadas, el sistema identificó expresiones como enojo, alegría y neutralidad con alta precisión.
-                </p>
+                
 
                 <img src="./img/btn-deslizar.jpg" alt="" width="100%" class="btn-deslizar">
 
-                <div class="scroll-facciones">
+                <div class="scroll-facciones" style="margin-bottom: 40px;">
                     <div class="box-sentimiento-facciones" id="box-enojo">
                         <div class="box-gif">
                             <h6 class="enojo">enojo</h6>
@@ -1351,6 +1351,10 @@
                     </div>-->
 
                 </div>
+
+                <p class="metodologia-flourish">
+                    <span>Metodología:</span>  Este análisis se basó en inteligencia artificial aplicada a imágenes: usamos redes neuronales convolucionales (CNN) para clasificar emociones en 144 mil gestos faciales de Dina Boluarte. A partir de 12 mil fotos validadas y entrenadas, el sistema identificó expresiones como enojo, alegría y neutralidad con alta precisión.
+                </p>
 
 
             </div>
