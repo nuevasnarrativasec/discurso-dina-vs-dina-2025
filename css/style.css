@@ -798,7 +798,7 @@ body{
             text-align: left;
         }
         #text-container{
-            max-height: 5300px;
+            max-height: 6900px;
             overflow: hidden;
             transition: max-height 0.5s ease;
         }
