@@ -110,6 +110,7 @@
             <div class="box-main-titular">
                 <h1>¿Qué cambió Dina Boluarte en su discurso? </h1>
                 <h2>Una guía para comparar sus discursos 2025 vs. 2024</h2>
+                <img src="https://nuevasnarrativasec.github.io/conclave/img/flecha-bajar.png" alt="bajar" width="100%" class="flecha-bajar">
                 <!--<p>
                     <span>
                         Cuantificamos, analizamos y verificamos el discurso por Fiestas Patrias de la presidenta del Perú.
@@ -1151,17 +1152,16 @@
                 <span class="tema-dina">Selecciona un tema clave en su gestión</span>
                 <ul>
                     <li id="btn-aprobacion">
-                        Evolución aprobación
+                        Aprobación
                     </li>
                     <li id="btn-sueldo">
-                        Sueldo porcentajes
+                        Incremento salarial
                     </li>
                     <li id="btn-prensa">
-                        Evolución dias sin <br>
-                        hablarle a la prensa
+                        Silencio ante <br> la prensa
                     </li>
                     <li id="btn-ausencia">
-                        Evolución dias de ausencia
+                        Ausencia en el cargo
                     </li>
                 </ul>
 
@@ -1193,6 +1193,10 @@
                     <p>
                         Dina Boluarte estuvo <span>12 días (del 29 de junio al 10 de julio de 2023)</span> presuntamente ausente del ejercicio de su cargo como presidenta pues durante esa fecha la Comisión de Fiscalización del Congreso reportó que "no se registraron actividades oficiales en la agenda presidencial”.
                     </p>
+
+                    <h3 style="margin-top: 30px;">
+                        Viajes internacionales de Dina Boluarte y sus costos (hasta junio de 2025)
+                    </h3>
                     <div id="map"></div>
 
                     <h3>
@@ -6909,6 +6913,16 @@
                 }
             });
             observer.observe();
+        });
+    </script>
+
+    <!-- flecha bajar -->
+    <script>
+        $(".flecha-bajar").click(function() {
+            $('html,body').animate({
+                scrollTop: $(".box-main").offset().top
+            },
+            'slow');
         });
     </script>
 

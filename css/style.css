@@ -41,7 +41,9 @@ body{
     margin: 0 auto;
     max-width: 980px;    
     padding: 10px 0;
+    position: relative;
     text-align: right;
+    z-index: 10;    
 }
 #social{   
     margin: 0 auto;
@@ -65,7 +67,7 @@ body{
                 width: 36px;
             }
                 #fb{
-                    background: url(https://d1ts5g4ys243sh.cloudfront.net/proyectos_especiales_prod/especiales-multimedia/abuso-infantil/img/fb-icon-negro.png?v2) no-repeat 0 0;
+                    background: url(https://d1ts5g4ys243sh.cloudfront.net/proyectos_especiales_prod/especiales-multimedia/personas-desaparecidas/img/fb-icon.png?v2) no-repeat 0 0;
                     background-size: 100% !important;
                     border: none;
                     display: inline-block;
@@ -74,7 +76,7 @@ body{
                     width: 36px;
                 }
                 #wst{                
-                    background: url(https://d1ts5g4ys243sh.cloudfront.net/proyectos_especiales_prod/especiales-multimedia/abuso-infantil/img/wsp-icon-negro.png?v2) no-repeat 0 0 !important;
+                    background: url(https://d1ts5g4ys243sh.cloudfront.net/proyectos_especiales_prod/especiales-multimedia/personas-desaparecidas/img/wsp-icon.png?v2) no-repeat 0 0 !important;
                     background-size: 100% !important;
                     border: none;
                     display: none;
@@ -83,7 +85,7 @@ body{
                     width: 36px;
                 }
                 #tw{            
-                    background: url(https://d1ts5g4ys243sh.cloudfront.net/proyectos_especiales_prod/especiales-multimedia/abuso-infantil/img/tw-icon-negro.png?v2) no-repeat 0 0 !important;
+                    background: url(https://d1ts5g4ys243sh.cloudfront.net/proyectos_especiales_prod/especiales-multimedia/personas-desaparecidas/img/tw-icon.png?v2) no-repeat 0 0 !important;
                     background-size: 100% !important;
                     border: none;
                     display: inline-block;
@@ -128,6 +130,12 @@ body{
         }
             .box-main-titular h2 span{
                 background-color: #FFF72F;
+            }
+            .box-main-titular .flecha-bajar{
+                cursor: pointer;
+                margin: 0 auto;
+                max-width: 50px;
+                position: relative;
             }
         .box-main-titular p{
             font: 16px / 1.5 'prelo_slabbook';
@@ -1395,7 +1403,7 @@ ul.leyenda-grafico{
         border-top: none;
         border-bottom: none;
         color: #252525;
-        font: 25px / 1.3 'prelo_slabbold';
+        font: 22px / 1.3 'prelo_slabbold';
         margin: 0 auto;
         text-align: center;        
     }
@@ -2074,10 +2082,13 @@ ul.leyenda-colores{
 
 #map {
     height: 600px;
-    margin: 40px auto;
+    margin: 20px auto 40px;
     max-width: 1200px;
     width: 100%;
 }
+    .leaflet-popup-content-wrapper strong{
+        font-weight: 900;
+    }
 #box-ausencia .flourish-embed{
     margin: 0 auto;
     max-width: 600px;
