@@ -1277,13 +1277,13 @@ ul.leyenda-grafico{
         vertical-align: top;
     }   
         ul.leyenda-grafico li:nth-child(1){
-            border-bottom: 5px solid #2A8E54;
+            border-bottom: 5px solid #1a8593;
         }
         ul.leyenda-grafico li:nth-child(2){
-            border-bottom: 5px solid #4699C6;
+            border-bottom: 5px solid #ffd958;
         }
         ul.leyenda-grafico li:nth-child(3){
-            border-bottom: 5px solid #E51A1A;
+            border-bottom: 5px solid #b52a2b;
         }
     .ctn-proyectos h5{
         font: 13px / 1.2 "Noto Sans KR", sans-serif;
