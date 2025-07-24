@@ -2091,3 +2091,6 @@ ul.leyenda-colores{
     margin: 30px auto;
     max-width: 800px;
 }
+.box-main-promesometro{
+    display: none !important;
+}
