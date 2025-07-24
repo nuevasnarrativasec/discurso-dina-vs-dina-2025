@@ -2091,6 +2091,10 @@ ul.leyenda-colores{
     margin: 30px auto;
     max-width: 800px;
 }
+#box-prensa .flourish-embed{
+    margin: 30px auto;
+    max-width: 700px;
+}
 .box-main-promesometro{
     display: none !important;
 }
