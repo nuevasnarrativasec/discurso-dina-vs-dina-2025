@@ -1239,7 +1239,6 @@ span.quechua{
         font-style: normal !important;
         margin-bottom: 20px;
         max-width: 550px;
-        text-align: center;
     }
         .box-main-promesometro p span{
             font-weight: 700;
@@ -1399,13 +1398,19 @@ ul.leyenda-grafico{
     margin: 70px auto;
 }
     .box-analisis-sentimiento h3,
-    #box-ausencia h3{
+    #box-ausencia h3,
+    #box-aprobacion h3,
+    #box-sueldo h3,
+    #box-prensa h3{
         border-top: none;
         border-bottom: none;
         color: #252525;
         font: 22px / 1.3 'prelo_slabbold';
         margin: 0 auto;
         text-align: center;        
+    }
+    #box-aprobacion h3{
+        max-width: 380px;
     }
         .box-analisis-sentimiento h3 span{
                 display: block;
@@ -1784,6 +1789,15 @@ ul.leyenda-colores{
         height: 100vh;
     }
 
+    #box-ausencia #map{
+        height: 400px;
+    }
+    .box-facciones .box-sentimiento-facciones,
+    .box-facciones .scroll-facciones .box-gif,
+    .box-facciones .scroll-facciones .box-info-sentimiento{
+        max-width: 100%;
+    }
+
 }
 
 @media only screen and (max-width: 767px) { 
@@ -2100,7 +2114,7 @@ ul.leyenda-colores{
     }
 #box-ausencia .flourish-embed{
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 750px;
 }   
 #box-ausencia p{
     font: 12px / 1.9 "Noto Serif KR", serif;
@@ -2115,7 +2129,7 @@ ul.leyenda-colores{
     max-width: 750px;
 }
 .box-main-promesometro{
-    display: none !important;
+   
 }
 
 .flecha-bajar {
