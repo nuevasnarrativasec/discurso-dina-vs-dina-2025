@@ -202,8 +202,8 @@ document.addEventListener("DOMContentLoaded", function() {
             showSentimentBox(this.getAttribute("data-target"));
         });
     });
-    document.querySelector("li[data-target='sentimiento-ollanta']").classList.add("active-sentimiento");
-    showSentimentBox("sentimiento-ollanta");
+    document.querySelector("li[data-target='sentimiento-dina']").classList.add("active-sentimiento");
+    showSentimentBox("sentimiento-dina");
 
     // Year-based content toggle
     let yearItems = document.querySelectorAll(".anios li");
