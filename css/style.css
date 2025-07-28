@@ -1949,6 +1949,10 @@ ul.leyenda-colores{
 .box-facciones{
     margin: 40px auto;
 }
+    .box-facciones .flourish-embed{
+        margin: 20px auto;
+        max-width: 700px;
+    }
     .box-sentimiento-facciones{
         flex: 0 0 auto;
         margin: 20px auto;
