@@ -806,7 +806,7 @@ body{
             text-align: left;
         }
         #text-container{
-            max-height: 6900px;
+            max-height: 6400px;
             overflow: hidden;
             transition: max-height 0.5s ease;
         }
@@ -2100,7 +2100,7 @@ ul.leyenda-colores{
         scroll-snap-type: x mandatory;
         gap: 20px;
         padding: 0 20px;
-        width: 1200px;
+        max-width: 100%;
     }
     img.btn-deslizar{
         display: block;
