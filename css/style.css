@@ -2146,3 +2146,9 @@ ul.leyenda-colores{
     50% { transform: translateY(20px); }
     100% { transform: translateY(0); }
 }
+
+p span.altas{
+    display: inline-block;
+    font-family: inherit;
+    text-transform: capitalize;
+}
