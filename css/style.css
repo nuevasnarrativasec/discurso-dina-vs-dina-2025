@@ -806,7 +806,7 @@ body{
             text-align: left;
         }
         #text-container{
-            max-height: 6400px;
+            max-height: 7770px;
             overflow: hidden;
             transition: max-height 0.5s ease;
         }
