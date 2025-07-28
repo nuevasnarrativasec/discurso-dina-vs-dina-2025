@@ -105,9 +105,9 @@ document.addEventListener("DOMContentLoaded", function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 let clocks = {
-                    "reloj-2025": { value: 18, color: "#FF292A" },
+                    "reloj-2025": { value: 27, color: "#FF292A" },
                     "reloj-2024": { value: 36, color: "#FF292A" },
-                    "reloj-2025-movil": { value: 18, color: "#FF292A" },
+                    "reloj-2025-movil": { value: 27, color: "#FF292A" },
                     "reloj-2024-movil": { value: 36, color: "#FF292A" }
                 };
                 let options = {
